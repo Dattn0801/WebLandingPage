@@ -1,0 +1,426 @@
+/*-------------------------------------*/
+/*---------------DEFAULT SETUP--------------*/
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Lato", sans-serif;
+  font-size: 20px; /*lấy % nhân 13*/
+  color: #5a5a5a;
+  background-color: #ffffff;
+  text-rendering: optimizeLegibility;
+}
+body {
+  overflow-x: hidden;
+}
+section {
+  padding: 50px;
+}
+.small-icoin {
+  color: #728ca3;
+  font-size: 130%;
+  margin-right: 10px;
+}
+/*-------------------------------------*/
+/*---------------Reuseable Component--------------*/
+.btn {
+  text-decoration: none;
+  color: white;
+  background-color: #e67e22;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 0 5px;
+  display: inline-block; /* để cho width áp dụng đc , inline ko chỉnh đc width vs height*/
+  width: 160px;
+  text-align: center;
+  transition: all 0.3s; /* tất cả các thuộc tính đều chuyển đổi*/
+}
+.btn:hover,
+.btn:active {
+  background-color: #d35400;
+}
+/*Thoát khỏi float*/
+.clearfix::after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.row {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+h1,
+h2,
+h3 {
+  text-transform: uppercase;
+  letter-spacing: 1px; /* kh cách các kí tự*/
+}
+h1 {
+  font-size: 300%;
+  font-weight: 400;
+  word-spacing: 5px; /* kh cách các chử*/
+  color: white;
+  line-height: 130%; /* kh cách các dòng*/
+  margin-bottom: 20px;
+}
+h2 {
+  color: #e67e22;
+  font-size: 180%;
+  font-weight: 700;
+  text-align: center;
+}
+h2::after {
+  content: " ";
+  display: block;
+  width: 150px;
+  height: 3px;
+  background-color: rgba(230, 126, 34, 0.5);
+  margin: 4px auto;
+}
+h3 {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #265077;
+  color: white;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.p-long {
+  text-align: center;
+  color: #265077;
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 70%;
+  margin-left: 15%; /* độ rộng 70% ,  căn trái 15 còn 15 auto giữa*/
+}
+
+/*-------------------------------------*/
+/*---------------Header--------------*/
+.logo {
+  width: 300px;
+  float: left;
+  margin-left: 60px;
+  margin-top: -50px;
+  margin-bottom: -100px;
+}
+.main-nav {
+  float: right;
+  list-style: none;
+  margin-right: 30px;
+  margin-top: 40px;
+}
+.main-nav li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 110%;
+  font-weight: 700;
+  transition: border-bottom 0.5s;
+  padding: 3px 0;
+}
+.main-nav li a:hover,
+.main-nav li a:active {
+  border-bottom: 3px solid #cccccc;
+}
+.main-nav li {
+  display: inline-block;
+  margin-right: 20px;
+  font-weight: 700;
+}
+
+header {
+  background-image: linear-gradient(
+      45deg,
+      rgba(2, 33, 64, 0.8) 55%,
+      rgba(45, 95, 93, 0.85)
+    ),
+    url("../img/background4.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* view height : tính theo phần trăm*/
+
+  background-attachment: fixed; /* ảnh di chuyển khi rê chuột*/
+}
+
+.heading-main-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45%, -55%); /* lùi lại 50% mà nó chiếm dụng*/
+  width: 1140px;
+}
+/*-------------------------------------*/
+/*---------------Sticky--------------*/
+.sticky {
+  background-color: rgba(2, 33, 64, 9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  padding-bottom: 20px;
+}
+.sticky .logo{
+  width: 250px;
+  margin-top: -40px;
+  margin-bottom: -70px;
+
+}
+.sticky .main-nav{
+  margin-top: 30px;
+}
+/*-------------------------------------*/
+/*---------------Moblie navigation icon--------------*/
+.moblie-nav-icon{
+  font-size: 200%;
+  color:#6b95db;
+  position: absolute;
+  top:55px;
+  right: 100px;
+  display: none;
+}
+.sticky .moblie-nav-icon{
+  top:30px
+}
+/*-------------------------------------*/
+/*---------------About section--------------*/
+.about-picture {
+  position: relative;
+  margin-top: 50px;
+}
+.about-picture img {
+  width: 90%;
+  border-radius: 20px;
+  border: 4px solid #98c5f0;
+  box-shadow: 0px 5px 15px 5px #265077; /*x-y- độ mờ , độ phóng đại , màu */
+  transition: all 0.7s;
+}
+.picture-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #98c5f0;
+  transform: translate(-65%, 100%);
+  opacity: 0;
+}
+.about-picture:hover img,
+.about-picture:active img {
+  filter: brightness(80%) blur(2px);
+}
+.about-picture:hover .picture-title,
+.about-picture:active .picture-title {
+  transform: translate(-65%, -50%);
+  opacity: 1;
+}
+/*-------------------------------------*/
+/*---------------Product section--------------*/
+.products-section {
+  background-color: #f4f4f4;
+}
+.products-section h2 {
+  margin-bottom: 60px;
+}
+
+.product-box {
+  background-color: #eeefff;
+  width: 90%;
+  box-shadow: 3px 5px 10px #e0e0e0;
+  height: 350px;
+}
+.product-price {
+  color: #265077;
+  font-size: 250%;
+  font-weight: 300;
+  text-align: center;
+}
+.product-price span {
+  font-size: 80%; /* 80 của cha tức 80 của 250*/
+}
+.product-box ul li {
+  margin-left: 20%;
+  list-style: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.product-box .btn {
+  margin-left: 25%;
+}
+/*-------------------------------------*/
+/*---------------Testimonials section--------------*/
+.testimonials-section {
+  background-image: url("../img/background1.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.testimonials-section h2 {
+  margin-bottom: 70px;
+}
+blockquote {
+  width: 95%;
+  position: relative;
+  font-style: italic;
+  line-height: 140%;
+  color: white;
+}
+blockquote::before {
+  content: "\201C";
+  display: block;
+  font-size: 300%;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+cite {
+  display: block;
+  color: #3d5e7c;
+  margin-top: 25px;
+}
+cite img {
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #265077;
+  vertical-align: middle; /*tên nằm giữa ảnh*/
+  margin-right: 5px;
+}
+/*-------------------------------------*/
+/*---------------Sponsor section--------------*/
+.sponsor-section {
+  background-color: #f4f4f4;
+}
+.sponsor-section h2 {
+  margin-bottom: 50px;
+}
+.sponsor-showcase {
+  margin-left: 8%;
+}
+.sponsor-showcase li {
+  list-style: none;
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sponsor-showcase li .logo-sponsor:hover,
+.sponsor-showcase li .logo-sponsor:active {
+  transform: scale(1.2);
+}
+
+.logo-sponsor {
+  width: 140px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+figcaption {
+  color: #265077;
+  font-weight: 900;
+  font-size: 120%;
+  cursor: pointer;
+}
+/*-------------------------------------*/
+/*---------------Contact form--------------*/
+.contact-section {
+  background-image: linear-gradient(
+      45deg,
+      rgba(2, 33, 64, 0.8) 55%,
+      rgba(45, 95, 93, 0.85)
+    ),
+    url(../img/background5.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+/*-------------------------------------*/
+/*---------------Footer--------------*/
+footer {
+  text-align: center;
+  background-color: #5a5a5a;
+  color: white;
+  padding: 20px;
+}
+.infomation {
+  list-style: none;
+  color: white;
+  line-height: 200%;
+  font-size: 95%;
+}
+.infomation .small-icoin {
+  color: #3980c2;
+}
+.infomation .small-icoin:hover,
+.infomation .small-icoin:active {
+  transform: scale(1.3);
+}
+.social-icons {
+  margin-top: 50px;
+  list-style: none;
+}
+.social-icons li {
+  display: inline-block;
+  font-size: 250%;
+  margin-left: 20px;
+  color: white;
+}
+.social-icons li i {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.social-icons li i:hover,
+.social-icons li i:active {
+  transform: scale(1.3);
+  color: #e67e22;
+}
+form {
+  background-color: rgb(0, 0, 0, 0.4);
+  margin-left: 30%;
+  width: 70%;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+form .row {
+  margin-bottom: 20px;
+}
+label {
+  font-size: 150%;
+  color: white;
+}
+input,
+textarea {
+  outline: none;
+  padding: 10px;
+  background-color: rgba(82, 82, 82, 0.3);
+  border: 1px solid rgba(124, 124, 124, 0.8);
+  border-radius: 5px;
+}
+textarea {
+  resize: none;
+  height: 100px;
+}
+input {
+  height: 50px;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 80%;
+  font-size: 100%;
+  transition: all 0.3s;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  color: white;
+  background-color: rgba(56, 56, 56, 0.8);
+}
+form .row:last-child {
+  text-align: center;
+}
+input[type="submit"] {
+  font-weight: 700;
+  font-size: 100%;
+  border-radius: 5px;
+  width: 50%;
+}
